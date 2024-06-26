@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { remover, editar } from '../../../store/reducers/tarefas'
+import { remover, editar, alteraStatus } from '../../../store/reducers/tarefas'
 import * as S from './styles'
 import * as enums from '../../../utils/enums/Tarefa'
 import TarefaClass from '../../../models/Tarefa'
@@ -25,7 +25,7 @@ const Tarefa = ({descricao: descricaoOriginal, prioridade, status, titulo, id}:P
     }
 
     function alteraStatusTarefa(evento: ChangeEvent<HTMLInputElement>) {
-        dispatch(alteraStatus ({
+        dispatch(alteraStatus({
             id, 
             finalizado: evento.target.checked
         }))
@@ -72,7 +72,3 @@ const Tarefa = ({descricao: descricaoOriginal, prioridade, status, titulo, id}:P
 }
 
 export default Tarefa 
-
-function alteraStatus(arg0: { id: number; finalizado: boolean }): any {
-    throw new Error('Function not implemented.')
-}
